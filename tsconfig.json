@@ -2,10 +2,9 @@
   "compilerOptions": {
     /* Basic Options */
     "target": "ES2020",
-    "module": "ESNext",
+    "module": "es6",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",  // New JSX transform (React 17+)
-    
     /* Module Resolution */
     "moduleResolution": "node",
     "baseUrl": ".",

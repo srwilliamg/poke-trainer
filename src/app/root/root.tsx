@@ -1,3 +1,4 @@
+import '../../index.css';
 import './root.css';
 
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
@@ -28,7 +29,7 @@ function Root() {
     },
   });
 
-  const showToast = (e: any) => {
+  const showToast = (e: z.infer<typeof FormSchema>) => {
     toast.error('Validation', {
       duration: 1200,
       description: e.name?.message,

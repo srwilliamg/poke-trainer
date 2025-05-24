@@ -13,8 +13,8 @@ const trainerSlice = createSlice({
   } as ITrainer,
   reducers: {
     setName: (state, action) => {
+      console.log('🚀 ~ state:', state, action);
       state.name = action.payload;
-      console.log('🚀 ~ state:', state);
     },
     addPokemon: (state, action) => {
       state.pokemonIds.push(action.payload);

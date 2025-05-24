@@ -1,6 +1,6 @@
 import './profile-img.css';
 
-export default function ProfileImg(props: { user: any }) {
+export default function ProfileImg(props: { user: unknown }) {
   const { user } = props;
   return (
     <div className="flex flex-col mx-1 my-1 max-sm:mx-5 p-3 sm:items-center sm:gap-2 sm:flex-row rounded-2xl bg-neutral-50">

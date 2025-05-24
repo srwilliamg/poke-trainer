@@ -1,18 +1,16 @@
-import { AppStoreTrainer, trainerStore } from "@/store/store"
+import { Provider } from 'react-redux';
+import { trainerStore } from '@/store/store';
 
-import { Provider } from "react-redux"
-import { useRef } from "react"
+let storeRef = null;
 
-export default function StoreProvider({
-    children
+export default function StoreTrainerProvider({
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const storeRef = useRef<AppStoreTrainer | null>(null)
-  if (!storeRef.current) {
-    // Create the store instance the first time this renders
-    storeRef.current = trainerStore()
+  if (!storeRef) {
+    storeRef = trainerStore();
   }
 
-  return <Provider store={storeRef.current}>{children}</Provider>
+  return <Provider store={storeRef}>{children}</Provider>;
 }

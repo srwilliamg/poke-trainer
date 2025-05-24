@@ -1,30 +1,38 @@
-import "./index.css";
+import './index.css';
 
-import { Container, createRoot } from "react-dom/client";
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router";
+import { Container, createRoot } from 'react-dom/client';
+import { RouterProvider, createBrowserRouter } from 'react-router';
 
-import Home from "./app/home/home";
-import Root from "./app/root/root";
-import StoreProvider from "./provider/trainer";
-import { StrictMode } from "react";
+import Home from './app/home/home';
+import Root from './app/root/root';
+import StoreTrainerProvider from './provider/trainer';
+import { StrictMode } from 'react';
+
+if (import.meta.env.DEV) {
+  console.log('Environment:', import.meta.env);
+}
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <StrictMode><StoreProvider><Root /></StoreProvider></StrictMode>,
+    path: '/',
+    element: (
+      <StrictMode>
+        <StoreTrainerProvider>
+          <Root />
+        </StoreTrainerProvider>
+      </StrictMode>
+    ),
   },
   {
-    path: "/home",
-    element: <Home></Home>
-  }
+    path: '/home',
+    element: (
+      <StoreTrainerProvider>
+        <Home></Home>
+      </StoreTrainerProvider>
+    ),
+  },
 ]);
 
-const root: Container = document.getElementById("root")as Container;
+const root: Container = document.getElementById('root') as Container;
 
-createRoot(root).render(
-  <RouterProvider router={router} />
-);
-
+createRoot(root).render(<RouterProvider router={router} />);
