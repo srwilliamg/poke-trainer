@@ -6,51 +6,35 @@ import { useEffect, useState } from 'react';
 import PokemonGrid from '@/components/pokemon-grid/pokemon-grid';
 import { useAppTrainerSelector } from '@/store/hooks';
 
-const pokemons = [
-  {
-    id: 1,
-    name: 'Hedy Lamarr',
-    position: 'Pokemon trainer',
-    imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-    imageSize: 90,
-  },
-  {
-    id: 2,
-    name: 'Gary Oak',
-    position: 'Pokemon trainer',
-    imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-    imageSize: 90,
-  },
-  {
-    id: 3,
-    name: 'Gale',
-    position: 'Pokemon trainer',
-    imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-    imageSize: 90,
-  },
-  {
-    id: 4,
-    name: "LaeZe'l",
-    position: 'Pokemon trainer',
-    imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-    imageSize: 90,
-  },
-];
-
 function Home() {
+  // const [setPokemons, getPokemons] = useState(null);
   const name = useAppTrainerSelector((state) => {
     return state.trainer.name;
   });
 
-  const [setPokemons, getPokemons] = useState();
-
   useEffect(() => {
     const getPokemonData = async () => {
-      fetch('localhost:3000/pokemon?name=pikachu');
+      const res = await fetch(
+        'http://localhost:3000/pokemon?limit=11&offset=0',
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      console.log('🚀 ~ getPokemonData ~ res:', res);
+
+      const jsonRes = await res.json();
+      console.log('🚀 ~ useEffect ~  jsonRes:', jsonRes);
+      // setPokemons(jsonRes);
     };
 
     getPokemonData();
-  }, []);
+  });
+
+  // const pokemons = getPokemons();
+  // console.log('🚀 ~ Home ~ pokemons:', pokemons);
 
   return (
     <div className="flex flex-col gap-2 h-screen bg-poke-umbreon w-full">
@@ -67,7 +51,7 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center w-11/12 self-center">
-        <PokemonGrid pokemons={pokemons}></PokemonGrid>
+        {/* <PokemonGrid pokemons={}></PokemonGrid> */}
       </div>
     </div>
   );

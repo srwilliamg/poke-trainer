@@ -12,6 +12,9 @@ if (import.meta.env.DEV) {
   console.log('Environment:', import.meta.env);
 }
 
+// export const API_URL =
+//   process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
+
 const router = createBrowserRouter([
   {
     path: '/',

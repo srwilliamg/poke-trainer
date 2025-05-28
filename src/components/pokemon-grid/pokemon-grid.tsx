@@ -3,8 +3,8 @@ import './pokemon-grid.css';
 import ProfileImg from '../profile-img/profile-img';
 
 export default function PokemonGrid({ pokemons }: { pokemons: unknown[] }) {
-  const listUsers = pokemons.map((user) => (
-    <ProfileImg key={user.id} user={user}></ProfileImg>
+  const listUsers = pokemons.map((data) => (
+    <ProfileImg key={data.id} data={data}></ProfileImg>
   ));
 
   return (
