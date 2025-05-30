@@ -7,33 +7,32 @@ import PokemonGrid from '@/components/pokemon-grid/pokemon-grid';
 import { useAppTrainerSelector } from '@/store/hooks';
 
 function Home() {
-  // const [setPokemons, getPokemons] = useState(null);
+  const [getPokemons, setPokemons] = useState<unknown[]>([]);
   const name = useAppTrainerSelector((state) => {
     return state.trainer.name;
   });
 
   useEffect(() => {
-    const getPokemonData = async () => {
-      const res = await fetch('/api/pokemon?limit=11&offset=0', {
-        method: 'GET',
-        headers: {
-          'x-api-key': 'AnyApiKey',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
-      console.log('🚀 ~ getPokemonData ~ res:', res);
+    try {
+      const getPokemonData = async () => {
+        const res = await fetch('/api/pokemon?limit=11&offset=0', {
+          method: 'GET',
+          headers: {
+            'x-api-key': 'AnyApiKey',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
 
-      const jsonRes = await res.json();
-      console.log('🚀 ~ useEffect ~  jsonRes:', jsonRes);
-      setPokemons(jsonRes);
-    };
+        const jsonRes = await res.json();
+        setPokemons(jsonRes);
+      };
 
-    getPokemonData();
-  });
-
-  // const pokemons = getPokemons();
-  // console.log('🚀 ~ Home ~ pokemons:', pokemons);
+      getPokemonData();
+    } catch (error) {
+      console.error('🚀 ~ useEffect ~ error:', error);
+    }
+  }, []);
 
   return (
     <div className="flex flex-col gap-2 h-screen bg-poke-umbreon w-full">
@@ -50,7 +49,7 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center w-11/12 self-center">
-        {/* <PokemonGrid pokemons={}></PokemonGrid> */}
+        <PokemonGrid pokemons={getPokemons}></PokemonGrid>
       </div>
     </div>
   );
