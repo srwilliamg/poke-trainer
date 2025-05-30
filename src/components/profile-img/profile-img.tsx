@@ -1,5 +1,7 @@
 import './profile-img.css';
 
+import { IPokemonData } from '@/interfaces/pokemon.interface';
+
 // "id": "79",
 // "name": "blastoise",
 // "extId": "9",
@@ -11,7 +13,7 @@ import './profile-img.css';
 // "updatedAt": "2025-05-25T21:37:00.949Z",
 // "deletedAt": null
 
-export default function ProfileImg(props: { data: unknown }) {
+export default function ProfileImg(props: { data: IPokemonData }) {
   const { data } = props;
   return (
     <div className="flex flex-col mx-1 my-1 max-sm:mx-5 p-3 sm:items-center sm:gap-2 sm:flex-row rounded-2xl bg-neutral-50">

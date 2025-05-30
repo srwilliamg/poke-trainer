@@ -149,15 +149,15 @@ h2 {
 
 @font-face {
   font-family: 'Pokemon';
-  src: url('webfont.eot'); /* IE9 Compat Modes */
   src:
-    /* Super Modern Browsers */
-    url('/src/assets/fonts/pokemon/PokemonSolid.woff') format('woff'),
-    /* Pretty Modern Browsers */
-      url('/src/assets/fonts/pokemon/PokemonSolid.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-      url('/src/assets/fonts/pokemon/PokemonSolid.svg#svgFontName')
-      format('svg'); /* Legacy iOS */
+    /* url('webfont.eot'), */
+    /* IE9 Compat Modes */ /* Super Modern Browsers */
+      /* url('/src/assets/fonts/pokemon/PokemonSolid.woff') format('woff'), */
+      /* Pretty Modern Browsers */ url('/src/assets/fonts/pokemon/PokemonSolid.ttf')
+    format('truetype');
+  /* Safari, Android, iOS */
+  /* url('/src/assets/fonts/pokemon/PokemonSolid.svg#svgFontName') */
+  /* format('svg'); Legacy iOS */
 }
 
 .font-family-pokemon {
