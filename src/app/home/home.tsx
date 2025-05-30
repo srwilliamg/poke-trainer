@@ -14,20 +14,19 @@ function Home() {
 
   useEffect(() => {
     const getPokemonData = async () => {
-      const res = await fetch(
-        'http://localhost:3000/pokemon?limit=11&offset=0',
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const res = await fetch('/api/pokemon?limit=11&offset=0', {
+        method: 'GET',
+        headers: {
+          'x-api-key': 'AnyApiKey',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
-      );
+      });
       console.log('🚀 ~ getPokemonData ~ res:', res);
 
       const jsonRes = await res.json();
       console.log('🚀 ~ useEffect ~  jsonRes:', jsonRes);
-      // setPokemons(jsonRes);
+      setPokemons(jsonRes);
     };
 
     getPokemonData();
